@@ -1,0 +1,17 @@
+StrictHostKeyChecking no
+UserKnownHostsFile /dev/null
+Compression yes
+
+Host bastion
+    HostName     localhost
+    Port         8022
+    User         alice
+    IdentityFile docker/ssh/id_rsa
+
+Host ssh1
+    HostName     ssh1
+    User         bob
+    Port         22
+    ProxyCommand ssh -o StrictHostKeyChecking=no -F ssh_config -W %h:%p bastion
+    IdentityFile docker/ssh/id_rsa
+    
