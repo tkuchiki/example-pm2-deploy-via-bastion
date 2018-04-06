@@ -8,8 +8,7 @@ Host bastion
     User         alice
     IdentityFile docker/ssh/id_rsa
 
-Host ssh1
-    HostName     ssh1
+Host ssh*
     User         bob
     Port         22
     ProxyCommand ssh -o StrictHostKeyChecking=no -F ssh_config -W %h:%p bastion
